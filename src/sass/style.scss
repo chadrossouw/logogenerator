@@ -1,0 +1,165 @@
+@function vh($quantity) {
+	@return calc(var(--vh, 1vh) * #{$quantity});
+}
+
+$blue:#101a2e;
+$white:#fff;
+$font:'Informative',sans;
+
+@font-face {
+    font-family: Informative;
+    src: url('../assets/fonts/informative.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body,
+html {
+    max-width: 100%;
+    font-family: $font;
+    background-color: $white;
+}
+
+:root{
+    --header-height:120px;
+    --margins:5%;
+    @media screen and (min-width:700px) {
+        --header-height:100px;
+        --margins:10%;
+    }
+    @media screen and (min-width:1000px) {
+        --margins:calc(50vw - 400px)
+    }
+}
+
+header,section,footer{
+    margin-left:var(--margins);
+    margin-right: var(--margins);
+
+}
+h1,h2,h3,p{
+    font-weight: 400;
+    text-align: center;
+    color:$blue;
+}
+h1,h2{
+    font-size: 4rem;
+    line-height: 105%;
+}
+h3{
+    font-size:1.5rem;
+}
+
+p,a,button{
+    font-size:1.2rem;
+}
+
+.main{
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+    @media screen and (min-width:1000px) {
+        grid-template-columns:calc(100px + 3rem) 1fr;
+        grid-template-rows: auto;
+    }
+}
+.buttons,.download{
+    @media screen and (min-width:1000px) {
+        grid-column: 1/3;
+    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    h3 {
+        flex-basis: 100%;
+        margin-bottom: 0;
+    }
+    button {
+        background-color: $white;
+        border: 2px solid $blue;
+        color: $blue;
+        padding: .5rem;
+        border-radius: 5px;
+        min-width: 100px;
+        cursor: pointer;
+        transition:all 400ms ease;
+        &:hover{
+            background-color: $blue;
+            border: 2px solid $blue;
+            color: $white;
+        }
+    }
+}
+
+.download {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid;
+}
+
+.icons{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:1rem;
+    grid-column:1/2;
+    touch-action: none;
+    background-color: #ecf0f9;
+    padding: 1rem;
+    .icon{
+        width:50px;
+        touch-action: none;
+    }
+    
+}
+
+.thick{
+    .icon_thin, #thin_logo{
+        display:none;
+    }
+    #thick{
+        background-color: $blue;
+        border: 2px solid $blue;
+        color: $white;
+    }
+    
+}
+
+.thin{
+    .icon_thick, #thick_logo{
+        display:none;
+    }
+    #thin{
+        background-color: $blue;
+        border: 2px solid $blue;
+        color: $white;
+    }
+}
+
+.logo{
+    position: relative;
+}
+.drop_zones{
+    div{
+        position: absolute;
+        &:hover,&.outline{
+            outline:2px dotted limegreen;
+        }
+        &.filled{
+            &:hover{
+                &::after{
+                   position:absolute;
+                   content:'x';
+                   line-height: 50%;
+                   top:5px;
+                   right:5px;
+                   color:red; 
+                }
+            }
+        }
+    }
+}
+

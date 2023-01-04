@@ -1,0 +1,11 @@
+{
+    "title":"Local South Logo Generator",
+    "content":{
+        "instructions":"Select a style, and then drag and drop icons into the logo",
+        "svgs":["arch","basket","bike","city","coffee","flame","leaf","plate","speech","stars","triangles","web"]
+    },
+    "meta":{
+        "title":"Local South Logo Generator",
+        "meta":"generates svg and png logos for Local South"
+    }
+}

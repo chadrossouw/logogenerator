@@ -1,0 +1,40 @@
+<div id="content"> 
+    <header>
+        <h1>Local South Logo Generator</h1>
+        <p>{{data.instructions}}</p>
+    </header>
+    <section class="main thin">
+        <div class="buttons">
+            <h3>Select style</h3>
+            <button id="thin">Thin</button>
+            <button id="thick">Thick</button>  
+        </div>
+        <div class="icons">
+            {% for svg in data.svgs  %}
+                <div class="icon" id="{{svg}}" draggable="true">
+                    {% assign thin = '/src/assets/svg/thin/'| append: svg | append: '.svg' %}
+                    {% assign thick = '/src/assets/svg/thick/'| append: svg | append: '.svg' %}
+                    <div class="icon_thin">{{thin | svgContents }}</div>
+                    <div class="icon_thick">{{thick | svgContents }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="logo">
+            <div id="logo_svgs">
+                {{ '/src/assets/svg/base_thin.svg' | svgContents}}
+                {{ '/src/assets/svg/base_fat.svg' | svgContents}}
+            </div>
+            <div class="drop_zones">
+                {% for counter in (1..4) %}
+                    <div id="zone_{{ counter }}" data-zone="box_{{ counter }}">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="download">
+            <button id="svg">Download SVG</button>
+            <button id="png">Download PNG</button>
+            <button id="jpg">Download JPG</button>
+        </div>
+    </section> 
+</div>
